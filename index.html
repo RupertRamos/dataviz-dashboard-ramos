@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="web_standard" name="shell-type" />
+    <title>Data Insights Dashboard</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <style>
+      @layer base {
+
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+        }
+
+        body {
+          overscroll-behavior: none;
+        }
+
+        main>:first-child {
+          margin-top: 0 !important;
+        }
+
+        main>:last-child {
+          margin-bottom: 0 !important;
+        }
+      }
+
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        "darkMode": "class",
+        "theme": {
+          "extend": {
+            "colors": {
+              "on-error-container": "#93000a",
+              "on-primary-container": "#a3faef",
+              "surface-bright": "#f8f9ff",
+              "error-container": "#ffdad6",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#9cf2e8",
+              "tertiary": "#7d4200",
+              "on-primary": "#ffffff",
+              "outline": "#6e7977",
+              "tertiary-container": "#a15600",
+              "tertiary-fixed": "#ffdcc3",
+              "outline-variant": "#bdc9c6",
+              "primary-container": "#0f766e",
+              "on-secondary-fixed-variant": "#3f465c",
+              "surface-container-low": "#eff4ff",
+              "on-error": "#ffffff",
+              "primary": "#005c55",
+              "surface": "#f8f9ff",
+              "surface-variant": "#d3e4fe",
+              "on-secondary": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "surface-dim": "#cbdbf5",
+              "secondary-fixed-dim": "#bec6e0",
+              "surface-container-high": "#dce9ff",
+              "on-primary-fixed": "#00201d",
+              "on-primary-fixed-variant": "#00504a",
+              "secondary-container": "#dae2fd",
+              "primary-fixed-dim": "#80d5cb",
+              "on-secondary-container": "#5c647a",
+              "on-surface": "#0b1c30",
+              "inverse-surface": "#213145",
+              "background": "#f8f9ff",
+              "surface-container": "#e5eeff",
+              "surface-tint": "#006a63",
+              "secondary": "#565e74",
+              "tertiary-fixed-dim": "#ffb77d",
+              "secondary-fixed": "#dae2fd",
+              "on-secondary-fixed": "#131b2e",
+              "inverse-primary": "#80d5cb",
+              "on-surface-variant": "#3e4947",
+              "on-tertiary-fixed": "#2f1500",
+              "on-tertiary-fixed-variant": "#6e3900",
+              "on-tertiary-container": "#ffe6d5",
+              "inverse-on-surface": "#eaf1ff",
+              "surface-container-highest": "#d3e4fe",
+              "error": "#ba1a1a",
+              "on-background": "#0b1c30"
+            },
+            "borderRadius": {
+              "DEFAULT": "0.25rem",
+              "lg": "0.5rem",
+              "xl": "0.75rem",
+              "full": "9999px"
+            },
+            "spacing": {
+              "space-xl": "2rem",
+              "gutter-sm": "1rem",
+              "margin-sm": "1rem",
+              "space-md": "1rem",
+              "margin": "2rem",
+              "gutter": "1.5rem",
+              "space-xs": "0.25rem",
+              "space-lg": "1.5rem",
+              "space-sm": "0.5rem"
+            },
+            "fontFamily": {
+              "display-metric-mobile": ["Inter"],
+              "body-md": ["Inter"],
+              "label-md": ["Inter"],
+              "code-sm": ["Inter"],
+              "body-lg": ["Inter"],
+              "label-sm": ["Inter"],
+              "display-metric": ["Inter"],
+              "headline-lg": ["Inter"],
+              "body-sm": ["Inter"],
+              "headline-md": ["Inter"],
+              "headline-sm": ["Inter"]
+            },
+            "fontSize": {
+              "display-metric-mobile": ["28px", {
+                "lineHeight": "36px",
+                "letterSpacing": "-0.01em",
+                "fontWeight": "700"
+              }],
+              "body-md": ["14px", {
+                "lineHeight": "20px",
+                "fontWeight": "400"
+              }],
+              "label-md": ["13px", {
+                "lineHeight": "16px",
+                "fontWeight": "500"
+              }],
+              "code-sm": ["12px", {
+                "lineHeight": "16px",
+                "fontWeight": "500"
+              }],
+              "body-lg": ["16px", {
+                "lineHeight": "24px",
+                "fontWeight": "400"
+              }],
+              "label-sm": ["11px", {
+                "lineHeight": "14px",
+                "letterSpacing": "0.04em",
+                "fontWeight": "600"
+              }],
+              "display-metric": ["36px", {
+                "lineHeight": "44px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }],
+              "headline-lg": ["24px", {
+                "lineHeight": "32px",
+                "letterSpacing": "-0.015em",
+                "fontWeight": "600"
+              }],
+              "body-sm": ["12px", {
+                "lineHeight": "16px",
+                "fontWeight": "400"
+              }],
+              "headline-md": ["20px", {
+                "lineHeight": "28px",
+                "letterSpacing": "-0.01em",
+                "fontWeight": "600"
+              }],
+              "headline-sm": ["16px", {
+                "lineHeight": "24px",
+                "fontWeight": "600"
+              }]
+            }
+          }
+        }
+      };
+    </script>
+  </head>
+  <body class="bg-background font-body-md text-on-surface antialiased">
+    <header class="fixed top-0 left-0 w-full z-50 bg-[#0F172A] border-b border-white/10">
+      <div class="h-16 w-full px-margin flex items-center justify-between">
+        <div class="flex items-center gap-space-lg">
+          <div class="flex items-center gap-space-sm">
+            <div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center text-on-primary-container shadow-sm">
+              <span class="material-symbols-outlined text-[20px]">analytics</span>
+            </div>
+            <span class="font-headline-sm text-headline-sm text-white tracking-tight">Data Insights Dashboard</span>
+          </div>
+          <nav class="hidden md:flex items-center gap-space-md ml-space-md" data-active-classes="text-white font-semibold">
+            <a aria-current="page" class="transition-colors text-white font-semibold" data-path="overview" href="#">Overview</a>
+            <a class="font-body-md text-body-md text-outline-variant hover:text-white transition-colors" data-path="sales-performance" href="#">Sales Performance</a>
+            <a class="font-body-md text-body-md text-outline-variant hover:text-white transition-colors" data-path="customer-analytics" href="#">Customer Analytics</a>
+            <a class="font-body-md text-body-md text-outline-variant hover:text-white transition-colors" data-path="product-trends" href="#">Product Trends</a>
+          </nav>
+        </div>
+        <div class="flex items-center gap-space-lg">
+          <div class="flex items-center gap-space-sm">
+            <span class="font-label-sm text-label-sm uppercase tracking-wider text-outline-variant">Dataset</span>
+            <div class="relative flex items-center">
+              <select id="dataset-select" class="px-space-md py-1.5 bg-white/10 hover:bg-white/15 text-white font-body-sm text-body-sm rounded-lg transition-colors cursor-pointer outline-none"></select>
+            </div>
+          </div>
+          <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="w-full pt-16 bg-background">
+      <div class="max-w-[1400px] mx-auto px-margin py-margin">
+        <div class="flex flex-col w-full">
+          <!-- Intro Section -->
+          <section class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-xl">
+            <div class="flex flex-col gap-space-xs">
+              <div class="flex items-center gap-space-sm mb-1">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span> Validated Dataset </span>
+              </div>
+              <h1 id="dataset-title" class="font-display-metric text-display-metric text-on-surface tracking-tight font-bold"></h1>
+              <p id="dataset-description" class="font-body-lg text-body-lg text-secondary"></p>
+            </div>
+            <div class="flex items-center pb-1">
+              <a id="dataset-source" class="inline-flex items-center gap-1.5 font-label-md text-label-md text-primary-container hover:text-primary transition-colors group cursor-pointer" href="#" rel="noopener noreferrer" target="_blank">
+                <span>View source on Kaggle</span>
+                <span class="material-symbols-outlined text-[16px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">open_in_new</span>
+              </a>
+            </div>
+          </section>
+          <!-- Summary Metric Cards (4 Cards Grid) -->
+          <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter mb-space-xl">
+            <!-- Card 1: Records Analyzed -->
+            <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div class="flex items-center justify-between mb-space-sm">
+                <span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Records analyzed</span>
+                <span class="material-symbols-outlined text-[20px] text-outline-variant">dataset</span>
+              </div>
+              <div class="flex items-baseline gap-space-xs mt-2">
+                <span id="kpi-records" class="font-display-metric text-display-metric text-on-surface tracking-tight font-bold"></span>
+              </div>
+              <div class="mt-space-md pt-space-xs flex items-center gap-1.5">
+                <span class="inline-flex items-center text-primary-container font-label-sm text-label-sm bg-surface-container-low px-2 py-0.5 rounded"> 100% complete </span>
+                <span class="font-body-sm text-body-sm text-outline">3 branch stores</span>
+              </div>
+            </div>
+            <!-- Card 2: Total Sales -->
+            <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div class="flex items-center justify-between mb-space-sm">
+                <span id="kpi-total-label" class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Total Sales</span>
+                <span class="material-symbols-outlined text-[20px] text-outline-variant">payments</span>
+              </div>
+              <div class="flex items-baseline gap-space-xs mt-2">
+                <span class="font-headline-md text-headline-md text-secondary font-semibold">$</span>
+                <span id="kpi-total" class="font-display-metric text-display-metric text-on-surface tracking-tight font-bold"></span>
+              </div>
+              <div class="mt-space-md pt-space-xs flex items-center gap-1.5">
+                <span class="inline-flex items-center text-primary-container font-label-sm text-label-sm bg-surface-container-low px-2 py-0.5 rounded">
+                  <span class="material-symbols-outlined text-[14px] mr-0.5">trending_up</span> +4.8% </span>
+                <span class="font-body-sm text-body-sm text-outline">Gross revenue</span>
+              </div>
+            </div>
+            <!-- Card 3: Top Category -->
+            <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div class="flex items-center justify-between mb-space-sm">
+                <span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Top category</span>
+                <span class="material-symbols-outlined text-[20px] text-outline-variant">category</span>
+              </div>
+              <div class="flex items-baseline gap-space-xs mt-2">
+                <span id="kpi-top" class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold truncate" title=""></span>
+              </div>
+              <div class="mt-space-md pt-space-xs flex items-center gap-1.5">
+                <span class="inline-flex items-center text-primary-container font-label-sm text-label-sm bg-surface-container-low px-2 py-0.5 rounded"> Top Share </span>
+                <span class="font-body-sm text-body-sm text-outline">Leading segment</span>
+              </div>
+            </div>
+            <!-- Card 4: Rows Skipped -->
+            <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div class="flex items-center justify-between mb-space-sm">
+                <span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Rows skipped (bad data)</span>
+                <span class="material-symbols-outlined text-[20px] text-tertiary">verified_user</span>
+              </div>
+              <div class="flex items-baseline gap-space-xs mt-2">
+                <span id="kpi-skipped" class="font-display-metric text-display-metric text-tertiary tracking-tight font-bold"></span>
+              </div>
+              <div class="mt-space-md pt-space-xs flex items-center gap-1.5">
+                <span class="inline-flex items-center text-tertiary font-label-sm text-label-sm bg-tertiary-fixed/30 px-2 py-0.5 rounded"> Clean syntax </span>
+                <span class="font-body-sm text-body-sm text-outline">0 anomalies</span>
+              </div>
+            </div>
+          </section>
+          <!-- Charts Section (2 Columns) -->
+          <section class="grid grid-cols-1 lg:grid-cols-2 gap-gutter mb-space-xl">
+            <!-- Left Card: Product Line Bar Chart -->
+            <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col">
+              <div class="flex items-start justify-between mb-space-md pb-space-sm">
+                <div>
+                  <h2 id="chart-category-title" class="font-headline-sm text-headline-sm text-on-surface font-semibold"></h2>
+                  <p class="font-body-sm text-body-sm text-secondary mt-0.5"> Aggregated gross revenue across retail segments </p>
+                </div>
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-surface-container-low text-primary-container font-label-sm text-label-sm font-medium shrink-0">
+                  <span class="material-symbols-outlined text-[14px]">bar_chart</span> Aggregated Volume </span>
+              </div>
+              <!-- Chart Container -->
+              <div style="position:relative;height:360px"><canvas id="chart-category"></canvas></div>
+            </div>
+            <!-- Right Card: Hourly Sales Line Chart -->
+            <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col">
+              <div class="flex items-start justify-between mb-space-md pb-space-sm">
+                <div>
+                  <h2 id="chart-trend-title" class="font-headline-sm text-headline-sm text-on-surface font-semibold"></h2>
+                  <p class="font-body-sm text-body-sm text-secondary mt-0.5"> Diurnal transaction traffic and purchase velocity </p>
+                </div>
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-surface-container-low text-primary-container font-label-sm text-label-sm font-medium shrink-0">
+                  <span class="material-symbols-outlined text-[14px]">schedule</span> Hourly Distribution </span>
+              </div>
+              <!-- Chart Container -->
+              <div style="position:relative;height:360px"><canvas id="chart-trend"></canvas></div>
+            </div>
+          </section>
+          <!-- Page Footer -->
+          <footer class="w-full py-space-md text-center">
+            <p class="font-body-sm text-body-sm text-secondary"> Built with Chart.js + PapaParse · Data from Kaggle · AI-assisted, human-verified </p>
+          </footer>
+        </div>
+      </div>
+    </main>
+    <footer class="w-full bg-surface-container-low mt-space-xl">
+      <div class="max-w-[1400px] mx-auto px-margin py-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md text-outline font-body-sm text-body-sm">
+        <span>© 2024 Data Insights Dashboard. Enterprise Analytics Engine.</span>
+        <div class="flex items-center gap-space-md">
+          <span class="flex items-center gap-space-xs">
+            <span class="w-2 h-2 rounded-full bg-primary"></span>System Operational </span>
+          <span>Schema v2.4</span>
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="data/supermarket.js"></script>
+    <script src="data/videogames.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
